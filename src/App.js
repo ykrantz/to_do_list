@@ -2,7 +2,8 @@ import logo from "./logo.svg";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Todos from "./components/Todos/Todos";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { logRoles } from "@testing-library/react";
 
 function App() {
   const initTodosList = [
@@ -11,16 +12,18 @@ function App() {
     { id: 3, title: "buy", completed: false },
   ];
   const [todosList, setTodosList] = useState(initTodosList);
+  const [todoCount, setTodoCount] = useState(initTodosList.length - 1);
 
+  // update number of todo in header
+  useEffect(() => setTodoCount(todosList.length), [todosList]);
+
+  // remove to do
   const removeTodo = (idToRemove) => {
     const newToDoList = todosList.filter((todo) => todo.id !== idToRemove);
-    // const newToDoList = [
-    //   { id: 2, title: "run", completed: true },
-    //   { id: 3, title: "buy", completed: false },
-    // ];
     setTodosList(newToDoList);
   };
 
+  // make todo completed or uncompleted
   const completeTodo = (id) => {
     const newToDoList = todosList.map((todo) => {
       if (todo.id !== id) {
@@ -38,6 +41,8 @@ function App() {
   const updateInputValue = (text) => {
     setInputValue(text);
   };
+
+  // add todo to list
   const addTodo = (inputText) => {
     let newId = todosList.length + 1;
     const newToDoList = [
@@ -50,8 +55,11 @@ function App() {
   return (
     <div className="App">
       <>
-        <Header />
-        <button onClick={() => addTodo(inputText)}>add Todo</button>
+        <Header todoCount={todoCount} />
+        {/* if no input text so button is disable */}
+        <button onClick={() => addTodo(inputText)} disabled={inputText === ""}>
+          add Todo
+        </button>
         <input
           type="text"
           onChange={(e) => updateInputValue(e.target.value)}

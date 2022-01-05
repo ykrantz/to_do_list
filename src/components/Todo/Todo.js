@@ -6,7 +6,9 @@ const Todo = ({ id, title, completed, removeTodo, completeTodo }) => {
       <li className={`Todo-todo ${completed ? "Todo-completed" : ""}`}>
         id: {id} || title: {title}
       </li>
-      <button onClick={() => completeTodo(id)}>✔️</button>
+      <button onClick={() => completeTodo(id)}>
+        {completed ? "❌" : "✔️"}
+      </button>
     </div>
   );
 };

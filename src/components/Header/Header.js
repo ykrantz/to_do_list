@@ -1,7 +1,12 @@
 import "./Header.css";
 
-const Header = () => {
-  return <h1>Todo List</h1>;
+const Header = ({ todoCount }) => {
+  return (
+    <>
+      <h1>Todo List</h1>
+      <h2>number of todos: {todoCount}</h2>
+    </>
+  );
 };
 
 export default Header;
