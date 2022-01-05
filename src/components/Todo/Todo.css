@@ -1,0 +1,12 @@
+.Todo-completed {
+  text-decoration: line-through;
+}
+.Todo-todo {
+  font-weight: bold;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.Todo-div {
+  display: flex;
+}
