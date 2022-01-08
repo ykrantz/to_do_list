@@ -60,11 +60,13 @@ function App() {
         <button onClick={() => addTodo(inputText)} disabled={inputText === ""}>
           add Todo
         </button>
-        <input
-          type="text"
-          onChange={(e) => updateInputValue(e.target.value)}
-          value={inputText}
-        ></input>
+        <div>
+          <input
+            type="text"
+            onChange={(e) => updateInputValue(e.target.value)}
+            value={inputText}
+          ></input>
+        </div>
         <Todos
           todosList={todosList}
           removeTodo={removeTodo}
