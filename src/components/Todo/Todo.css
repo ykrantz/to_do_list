@@ -9,4 +9,8 @@
 
 .Todo-div {
   display: flex;
+  /* align-content: center; */
+}
+
+.Todo-edit {
 }
